@@ -47,6 +47,6 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./build/release.zip
-        asset_name: ${{ github.ref }}.zip
+        asset_name: ${{echo ${{ github.ref }} | sed -e "s#refs.tags.##g" }}.zip
         asset_content_type: application/zip
 
