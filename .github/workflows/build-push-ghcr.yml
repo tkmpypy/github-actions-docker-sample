@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/ghcr-sample:${{ steps.outputs.version }}
+          tags: ghcr.io/${{ github.repository_owner }}/ghcr-sample:${{ steps.version.outputs.version }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
