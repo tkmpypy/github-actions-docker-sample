@@ -13,8 +13,7 @@ jobs:
       - name: Set version
         id: version
         run: |
-          VERSION=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
-          echo ::set-output name=version::$VERSION
+          echo 'version=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")'
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -34,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ steps.version.outputs.version }}
+          tags: ghcr.io/${{ github.repository }}:${{ env.version }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
