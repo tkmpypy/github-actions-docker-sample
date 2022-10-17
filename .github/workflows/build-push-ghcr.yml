@@ -13,7 +13,7 @@ jobs:
       - name: Set version
         id: version
         run: |
-          echo 'version=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")'
+          echo version=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g") >> $GITHUB_ENV
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
